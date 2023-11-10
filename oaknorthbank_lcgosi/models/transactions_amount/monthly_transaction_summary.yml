@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: monthly_transaction_summary
+    description: >
+      A model that calculates the total transaction amount for each month over the last 12 months
+      1. Calculate the percentage change in transaction totals from one month to the next
+      2. Calculate the top customer for each month by selecting the customer with the highest spending
+    columns:
+      - name: transaction_month
+        description: The month of the transaction
+      - name: customer_id
+        description: The customer ID
+        tests:
+         - unique
+         - not_null
+      - name: amount_spending_top_ranked_customer
+        description: The total transaction amount for the customer in the given month
+      - name: amount_spending_all_customers
+        description: The total transaction amount for all customers in the given month
+      - name: monthly_percent_diff_spending_top_and_all_customers
+        description: The percentage change in total transaction amount compared to the previous month
+        meta:
+          precision: 2

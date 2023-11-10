@@ -1,0 +1,39 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  db:
+    image: postgres:14.0
+    environment:
+      POSTGRES_USER: dbt_user
+      POSTGRES_PASSWORD: dbt_password
+      POSTGRES_DB: dbt_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  dbt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - dbt_modules:/root/.dbt/modules/
+      - dbt_packages:/root/.dbt/packages/
+# change the values to your own keys
+    environment:
+      DBT_PROFILES_DIR: /app/
+      DBT_PROFILE: postgres
+      DBT_PROJECT_DIR: /app/
+      DBT_TARGET: dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: postgres
+
+volumes:
+  postgres-data:
+  dbt_modules:
+  dbt_packages:

@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: clean_customers
+    description: >
+      A model that represents cleaned customer data after data cleaning.
+      Includes customer information with validated and cleaned date fields.
+    columns:
+      - name: customer_id
+        description: The customer ID
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: The customer's name
+      - name: date_of_birth
+        description: The date of birth of the customer
+        type: date
+      - name: joined_date
+        description: The date when the customer joined
+        type: date

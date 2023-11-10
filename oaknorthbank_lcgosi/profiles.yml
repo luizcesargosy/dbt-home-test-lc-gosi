@@ -1,0 +1,31 @@
+oaknorthbank_lcgosi:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      port: 5432
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      database: "{{ env_var('POSTGRES_DB') }}"
+      schema: oaknorth # Esquema para resultados do modelo
+      threads: 1
+      keepalives_idle: 7200 # idle time in seconds
+  vars:
+    adapter: postgres
+
+  seeds:
+    customers:
+      seed:
+        +file:
+          file: seeds/customers.csv
+        +quoting:
+          quotechar: '"'
+          delimiter: ','
+    transactions:
+      seed:
+        +file:
+          file: seeds/transactions.csv
+        +quoting:
+          quotechar: '"'
+          delimiter: ','

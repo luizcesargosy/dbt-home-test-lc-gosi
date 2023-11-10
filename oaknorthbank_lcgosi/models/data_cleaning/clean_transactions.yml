@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: clean_transactions
+    description: >
+      A model that represents cleaned transaction data after data cleaning.
+      Includes transaction information with validated and cleaned date fields.
+    columns:
+      - name: transaction_id
+        description: The transaction ID
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: The customer ID
+        tests:
+          - not_null
+      - name: transaction_date
+        description: The date of the transaction
+        type: date
+      - name: amount
+        description: The transaction amount
