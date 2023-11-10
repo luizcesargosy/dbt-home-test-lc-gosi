@@ -1,5 +1,5 @@
 # oaknorthbank-lcgosi
-OakNorth DBT Home Test
+OakNorth DBT Home Test: Luiz Gosi
 
 ## Description
 
@@ -32,9 +32,9 @@ These considerations highlight the data source, potential inconsistencies, and t
 # For Connection DBMS PostgreSQL - if necessary -
 - Run on terminal if necessary to set up connection for dbt debug
 ```python
-POSTGRES_USER=postgres
+export POSTGRES_USER=postgres
 export POSTGRES_PASSWORD=root
-POSTGRES_DB=postgres 
+export POSTGRES_DB=postgres 
 ```
 
 # DBT
